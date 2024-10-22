@@ -16,7 +16,7 @@ $startYear = 1024;
 $inputYear = 2024; // 可以改為任意年份
 
 $currentTianGanIndex = 0; // 天干索引
-$currentDiZhiIndex = 0;    // 地支索引
+$currentDiZhiIndex = 0; // 地支索引
 
 // 從1024年開始，循環至目標年份
 for ($i = $startYear; $i <= $inputYear; $i++) {
@@ -30,6 +30,55 @@ for ($i = $startYear; $i <= $inputYear; $i++) {
     $currentTianGanIndex = ($currentTianGanIndex + 1) % 10; // 天干每10年循環
     $currentDiZhiIndex = ($currentDiZhiIndex + 1) % 12;     // 地支每12年循環
 }
+?>
+
+<?php
+$sky=['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
+$land=['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+
+$sl=[];
+
+for($i=0;$i<6;$i++){
+
+    for($j=0;$j<10;$j++){
+        $cellnum=10*$i+$j;
+        $landIndex=$cellnum%12;
+        $sl[]=$sky[$j].$land[$landIndex];
+    }
+}
+$year=2034;
+
+echo $sl[($year-4)%60];
+
+//echo "<pre>";
+print_r($sl);
+//echo "</pre>";
+
+
+?>
+
+<?php
+
+
+$a=[2,4,6,1,8];
+echo "<pre>";
+print_r($a);
+echo "</pre>";
+for($i=0;$i<floor(count($a)/2);$i++){
+    $temp=$a[$i];
+    $a[$i]=$a[count($a)-1-$i];
+    $a[count($a)-1-$i]=$temp;
+}
+echo "<br>";
+echo "<pre>";
+print_r($a);
+echo "<pre>";
+echo "<br>";
+
+print_r(array_reverse($a));
+
+
+
 ?>
 
 </body>

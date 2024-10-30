@@ -61,6 +61,12 @@
     </style>
 </head>
 <body>
+    <?php
+    if(isset($_GET['login'])){
+
+    }
+    ?>
+    
     <div class="login-container">
         <h1>登入</h1>
         
@@ -83,5 +89,22 @@
             <input type="submit" value="登入">
         </form>
     </div>
+    <?php
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ?>
+
+
+
+
+    
 </body>
 </html>

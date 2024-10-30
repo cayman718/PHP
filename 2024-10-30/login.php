@@ -62,48 +62,34 @@
 </head>
 <body>
     <?php
-    if(isset($_GET['login'])){
-
-    }
+    // session_start();
+    if(!isset($_COOKIE['login'])){
     ?>
+        <div class="login-container">  
+            <h1>登入</h1>
+            <form action="check_acc.php" method="post">
+                <label for="username">使用者名稱:</label>
+                <input type="text" name="acc" id="username" required>
+                
+                <label for="password">密碼:</label>
+                <input type="password" name="pw" id="password" required>
+                
+                <input type="submit" value="登入">
+            </form>
+         </div>
     
-    <div class="login-container">
-        <h1>登入</h1>
-        
-        <!-- 錯誤信息 -->
-        <div class="error-message">
-            <?php
-            if (isset($_GET['error'])) {
-                echo "使用者名稱或密碼錯誤。";
-            }
-            ?>
-        </div>
-        
-        <form action="check_acc.php" method="post">
-            <label for="username">使用者名稱:</label>
-            <input type="text" name="username" id="username" required>
-            
-            <label for="password">密碼:</label>
-            <input type="password" name="password" id="password" required>
-            
-            <input type="submit" value="登入">
-        </form>
-    </div>
     <?php
+}else{
+?>
+        <div>
+            你已登入
+        </div>
+<?php
+}
+?>
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    ?>
-
-
-
 
     
 </body>

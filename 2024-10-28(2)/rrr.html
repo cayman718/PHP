@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>萬年曆</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 設定頁面基本字體和背景 */
+        body {
+            background-color: #f2f2f2;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 標題區域 */
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+
+        /* 月份導航區域 */
+        .nav {
+            max-width: 900px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .month-title {
+            font-size: 36px;
+            color: #2c3e50;
+            font-weight: bold;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #3498db;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #2980b9;
+        }
+
+        /* 日曆表格 */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td {
+            background-color: #ffffff;
+            padding: 20px 10px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background-color 0.3s;
+            position: relative;
+        }
+
+        td:hover {
+            background-color: #ecf0f1;
+            transform: scale(1.05);
+        }
+
+        .today {
+            background-color: #3498db;
+            color: #ffffff;
+            font-weight: bold;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 1.2em;
+        }
+
+        .event {
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: center;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .grey-text {
+            color: #bbb;
+        }
+
+        .holiday {
+            background: #fd79a8;
+            color: #fff;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 日期排版調整 */
+        table td:nth-child(1), table td:nth-child(7) {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>萬年曆</h1>
+
+    <!-- 月份導航區域 -->
+    <div class="nav">
+        <a href="#">上一個月</a>
+        <div class="month-title">2024年11月</div>
+        <a href="#">下一個月</a>
+    </div>
+
+    <!-- 日曆表格 -->
+    <table>
+        <tr>
+            <td>日</td>
+            <td>一</td>
+            <td>二</td>
+            <td>三</td>
+            <td>四</td>
+            <td>五</td>
+            <td>六</td>
+        </tr>
+        <tr>
+            <td class="grey-text">01</td>
+            <td>02</td>
+            <td>03</td>
+            <td class="today">04</td>
+            <td>05</td>
+            <td>06</td>
+            <td>07</td>
+        </tr>
+        <tr>
+            <td>08</td>
+            <td class="event">09</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+            <td class="holiday">14</td>
+        </tr>
+        <!-- 其他日期繼續放入 -->
+    </table>
+
+</body>
+</html>

@@ -6,8 +6,8 @@ echo "</pre>"; */
 
 
 $sql="UPDATE `member` SET `acc`='{$_POST['acc']}' , 
-                           `pw`='{$_POST['pw']}' ,
                            `email`='{$_POST['email']}' ,
+                           `pw`='{$_POST['pw']}' ,
                            `tel`='{$_POST['tel']}' 
                            WHERE `id`='{$_POST['id']}'";
 

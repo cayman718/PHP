@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>member registration</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-           .regis{
-            
-           }
-    </style>
+    
 </head>
 <body>
     <div class="regis">
@@ -39,7 +35,7 @@
             <button type="submit" class="submit-btn">註冊</button>
             
             <p class="login-link">
-                已有帳號？<a href="#">登入</a>
+                已有帳號？<a href="login.php">登入</a>
             </p>
         </form>
     </div>

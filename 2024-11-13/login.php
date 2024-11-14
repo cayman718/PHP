@@ -71,7 +71,7 @@
     ?>
         <div class="register-container">
         <form  action="check_account.php" method="post" class="register-form">
-            <h2>註冊帳戶</h2>
+            <h2>登入帳戶</h2>
             
             <input type="text" name="acc" placeholder="帳號" required>
             
@@ -81,11 +81,9 @@
             
             <input type="text" name="tel" placeholder="電話" required>
             
-            <button type="submit" class="submit-btn">註冊</button>
+            <button type="submit" class="submit-btn">登入</button>
             
-            <p class="login-link">
-                已有帳號？<a href="#">登入</a>
-            </p>
+            
         </form>
     </div>
     <?php

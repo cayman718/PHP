@@ -1,0 +1,900 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f8f9fa;
+    --border-color: #e9ecef;
+    --text-color: #343a40;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text-color);
+    background: var(--gray-100);
+    height: 100vh;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 280px 1fr 300px;
+    height: 100vh;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* 左側概覽面板樣式 */
+.overview-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.stats-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.stat-item:hover {
+    background: var(--gray-100);
+}
+
+.stat-value {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: var(--gray-500);
+}
+
+/* 中間日曆區域樣式 */
+.calendar-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    height: calc(100vh - 40px);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.date-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.date-nav h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #333;
+    min-width: 120px;
+}
+
+.nav-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-controls .btn {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-controls .btn:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+.today-btn {
+    color: #1a73e8;
+    font-weight: 500;
+}
+
+.view-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.view-controls .btn {
+    padding: 6px 16px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.view-controls .btn:hover {
+    background: #f5f5f5;
+}
+
+.view-controls .btn.active {
+    background: #1a73e8;
+    color: white;
+    border-color: #1a73e8;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto repeat(5, 1fr);
+    gap: 2px;
+    background: #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    flex: 1;
+    min-height: 500px;
+    padding: 2px;
+    box-shadow: 0 0 0 1px #ccc;
+}
+
+.calendar-cell {
+    position: relative;
+    height: 90px;
+    padding: 10px;
+    background: white;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border: 1px solid #eee;
+}
+
+.calendar-header-cell {
+    background: #f0f0f0;
+    padding: 16px 8px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1em;
+    color: #333;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #ddd;
+}
+
+.date-container {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.events-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.event-dot {
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    margin: 2px 0;
+}
+
+.event-dot.important {
+    background: var(--warning-color);
+}
+
+.more-events {
+    font-size: 0.8em;
+    color: var(--gray-500);
+    text-align: center;
+}
+
+.calendar-cell.selected {
+    background: #e8f0fe;
+    box-shadow: inset 0 0 0 2px #1a73e8;
+}
+
+.calendar-cell:hover {
+    background: #f5f5f5;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.calendar-cell.today {
+    background: #e6f3ff;
+    /* border: 2px solid #1a73e8; */
+}
+
+.calendar-cell.today .date-container {
+    background: #1a73e8;
+    color: white;
+    font-weight: 700;
+}
+
+.calendar-cell.other-month {
+    background: #f8f8f8;
+}
+
+.calendar-cell.other-month .date-container {
+    color: #bbb;
+}
+
+.calendar-grid > .calendar-cell:nth-child(7n + 1),
+.calendar-grid > .calendar-cell:nth-child(7n) {
+    background: #fafafa;
+}
+
+.calendar-grid > .calendar-header-cell:first-child,
+.calendar-grid > .calendar-header-cell:last-child {
+    color: #e53935;
+}
+
+.calendar-grid > .calendar-header-cell:first-child,
+.calendar-grid > .calendar-header-cell:last-child {
+    color: #1976d2;
+}
+
+.calendar-grid > .calendar-cell:nth-child(7n + 1) .date-container {
+    color: #e53935;
+}
+
+.calendar-grid > .calendar-cell:nth-child(7n) .date-container {
+    color: #1976d2;
+}
+
+.calendar-cell.other-month:nth-child(7n + 1) .date-container,
+.calendar-cell.other-month:nth-child(7n) .date-container {
+    color: #ccc;
+}
+
+/* 右側待辦面板樣式 */
+.todo-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.todo-filters {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-btn {
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.todo-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.todo-item:hover {
+    background: var(--gray-100);
+}
+
+.todo-item.completed .todo-title {
+    text-decoration: line-through;
+    color: var(--success-color);
+}
+
+.todo-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.todo-title {
+    flex: 1;
+    transition: all 0.2s ease;
+}
+
+.todo-delete {
+    border: none;
+    background: none;
+    color: var(--gray-500);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.todo-item:hover .todo-delete {
+    opacity: 1;
+}
+
+.todo-delete:hover {
+    color: var(--danger-color);
+    background: var(--gray-100);
+}
+
+.quick-add {
+    display: flex;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+}
+
+.quick-add input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.2s ease;
+}
+
+.quick-add input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* 事項列表樣式 */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--gray-100);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.event-item:hover {
+    transform: translateX(4px);
+}
+
+.event-time {
+    color: var(--primary-color);
+    font-weight: 500;
+    min-width: 60px;
+}
+
+.event-title {
+    flex: 1;
+}
+
+.event-actions {
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.event-item:hover .event-actions {
+    opacity: 1;
+}
+
+.event-actions button {
+    border: none;
+    background: none;
+    color: var(--gray-500);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.event-actions button:hover {
+    color: var(--primary-color);
+    background: var(--gray-200);
+}
+
+/* 按鈕通用樣式 */
+.btn {
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background: var(--gray-100);
+}
+
+.btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.btn-add {
+    padding: 6px 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-add:hover {
+    background: #357abd;
+}
+
+.quick-add-btn {
+    padding: 8px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.quick-add-btn:hover {
+    background: #357abd;
+}
+
+/* 響應式設計 */
+@media (max-width: 1200px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+    }
+    
+    .overview-panel {
+        display: none;
+    }
+    
+    .todo-panel {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .calendar-cell {
+        min-height: 80px;
+    }
+    
+    .events-container {
+        display: none;
+    }
+}
+
+/* 無數據狀態 */
+.no-events, .no-todos {
+    text-align: center;
+    color: var(--gray-500);
+    padding: 20px;
+}
+
+/* 動畫效果 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.calendar-cell, .todo-item, .event-item {
+    animation: fadeIn 0.3s ease;
+}
+
+/* 週視圖樣式 */
+.calendar-cell.week-view {
+    height: 400px; /* 更高的格子 */
+}
+
+/* 日視圖樣式 */
+.calendar-cell.day-view {
+    height: 600px; /* 全天視圖 */
+    width: 100%;
+}
+
+/* 事項對話框樣式 */
+.event-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.dialog-content {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dialog-content h3 {
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.dialog-content input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+/* 今日待辦項目樣式 */
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.todo-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.todo-text {
+    flex: 1;
+}
+
+.delete-btn {
+    color: #dc2626;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.todo-item:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background: #fee2e2;
+}
+
+/* 已完成項目樣式 */
+.todo-item.completed {
+    background: #f8f9fa;
+}
+
+.todo-date {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.todo-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* 待辦清單面板樣式 */
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-todo-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #1a73e8;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.add-todo-btn:hover {
+    background: #1557b0;
+    transform: scale(1.05);
+}
+
+/* 對話框樣式 */
+.todo-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.dialog-content {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dialog-content input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.dialog-buttons .btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+.dialog-buttons .cancel {
+    background: #f1f3f4;
+    color: #333;
+}
+
+.dialog-buttons .confirm {
+    background: #1a73e8;
+    color: white;
+}
+
+/* 過去紀錄樣式 */
+.todo-info {
+    display: flex;
+    gap: 8px;
+    font-size: 0.85em;
+    color: #666;
+}
+
+.todo-status {
+    color: #1a73e8;
+    font-weight: 500;
+}
+
+.todo-item.已刪除 .todo-status {
+    color: #dc2626;
+}
+
+.todo-item.已完成 .todo-status {
+    color: #16a34a;
+}
+
+.todo-date {
+    color: #666;
+}
+
+.todo-item.已刪除 .todo-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.todo-item.已完成 .todo-text {
+    color: #16a34a;
+}
+
+/* 即將到來的事項樣式 */
+.upcoming-event {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: var(--gray-100);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.upcoming-event:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.upcoming-event .event-date {
+    color: var(--primary-color);
+    font-weight: 500;
+    min-width: 80px;
+}
+
+.upcoming-event .event-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.upcoming-event .event-title {
+    font-weight: 500;
+}
+
+.upcoming-event .event-type {
+    font-size: 0.85em;
+    color: var(--gray-500);
+}
+
+/* 重要提醒特殊樣式 */
+.upcoming-event.important {
+    background: #fff3e0;
+    border-left: 3px solid var(--warning-color);
+}
+
+.upcoming-event.important .event-date {
+    color: var(--warning-color);
+}
+
+/* 統計卡片樣式優化 */
+.stats-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 第三個統計項（重要提醒）特殊樣式 */
+.stat-item:nth-child(3) .stat-value {
+    color: var(--warning-color);
+}
+
+.events-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+/* 美化滾動條 */
+.events-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.events-list::-webkit-scrollbar-track {
+    background: var(--gray-100);
+    border-radius: 3px;
+}
+
+.events-list::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+    border-radius: 3px;
+}
+
+/* 空列表提示樣式 */
+.empty-message {
+    text-align: center;
+    color: var(--gray-500);
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+/* 統計數字動畫效果 */
+.stat-value {
+    transition: color 0.3s ease;
+}
+
+.stat-value.updating {
+    color: var(--primary-color);
+}
+
+/* 統計項目懸停效果 */
+.stat-item {
+    cursor: pointer;
+}
+
+.stat-item:hover .stat-value {
+    transform: scale(1.1);
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日曆儀表板</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- 左側概覽面板 -->
+        <aside class="overview-panel">
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>我的日曆</h3>
+            </div>
+
+            <div class="stats-card">
+                <h3>本週概覽</h3>
+                <div class="stat-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <div class="stat-info">
+                        <span class="stat-value">12</span>
+                        <span class="stat-label">本週事項</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-tasks"></i>
+                    <div class="stat-info">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">待辦事項</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-star"></i>
+                    <div class="stat-info">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">重要提醒</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upcoming-events">
+                <h3>即將到來</h3>
+                <div class="events-list">
+                    <!-- 即將到來的事項由 JavaScript 生成 -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- 中間日曆區域 -->
+        <main class="calendar-panel">
+            <div class="calendar-header">
+                <div class="date-nav">
+                    <h2>2024年3月</h2>
+                    <div class="nav-controls">
+                        <button class="btn today-btn">今天</button>
+                        <button class="btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendar-grid">
+                <!-- 日曆內容由 JavaScript 生成 -->
+            </div>
+        </main>
+
+        <!-- 右側待辦清單 -->
+        <aside class="todo-panel">
+            <div class="todo-header">
+                <h3>待辦清單</h3>
+                <button class="add-todo-btn"><i class="fas fa-plus"></i></button>
+            </div>
+
+            <div class="todo-filters">
+                <button class="filter-btn active">今日待辦</button>
+                <button class="filter-btn">已完成</button>
+            </div>
+
+            <div class="todo-list">
+                <!-- 待辦事項由 JavaScript 生成 -->
+            </div>
+
+            <div class="quick-add">
+                <input type="text" placeholder="快速新增待辦...">
+                <button class="quick-add-btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </aside>
+    </div>
+
+    <script src="calendar.js"></script>
+</body>
+</html>
